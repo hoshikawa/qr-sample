@@ -6,6 +6,11 @@ export type Props = {
 
 export default function QrReader(props: Props) {
     const { ref } = useZxing({
+        constraints: {
+            video: {
+                facingMode: { exact: 'user' },
+            },
+        },
         onResult(result) {
             props.onResult(result);
         },
